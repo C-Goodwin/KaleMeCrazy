@@ -49,5 +49,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ShopService.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KaleMeCrazy.Data\KaleMeCrazy.Data.csproj">
+      <Project>{ee219747-978c-40e7-9661-0c78f09b8808}</Project>
+      <Name>KaleMeCrazy.Data</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KaleMeCrazy.Models\KaleMeCrazy.Models.csproj">
+      <Project>{cd77416f-bb00-4d7b-92cb-20e6035de251}</Project>
+      <Name>KaleMeCrazy.Models</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
