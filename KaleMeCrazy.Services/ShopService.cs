@@ -1,4 +1,5 @@
 ﻿using KaleMeCrazy.Data;
+using KaleMeCrazy.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,12 +25,12 @@ namespace KaleMeCrazy.Services
         public bool CreateNote(ShopCreate model)
         {
             var entity =
-                new shop()
+                new Shop()
                 {
-                    ShopId = _userId,
+                    OwnerId=_userId,
                     Name = model.Name,
                     Menu = model.Menu,
-                    location = model.Location,
+                    Location = model.Location,
                     CreatedUtc = DateTimeOffset.Now
                 };
 

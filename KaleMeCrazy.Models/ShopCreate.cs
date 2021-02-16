@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace KaleMeCrazy.Models
 {
-    class ShopCreate
+    public class ShopCreate
     {
         [Required]
         [MinLength(2, ErrorMessage = "The store name must be at least 2 Characters.")]
@@ -17,5 +17,8 @@ namespace KaleMeCrazy.Models
         [MaxLength(10000)]
         public string Menu { get; set; }
 
+        public string Location { get; set; }
+
+        public DateTime CreatedUtc { get; set; }
     }
 }
