@@ -14,12 +14,14 @@ namespace KaleMeCrazy.Data
         public int OrderId { get; set; }
         [ForeignKey ("Customer")]
         public int CustomerId { get; set; }
+        public virtual Customer Customer{ get; set; }
         [Required]
         public List<OrderItem> OrderItems { get; set; }
         [Required]
         public double TotalPrice { get; set; }
         [ForeignKey("Shop")]
         public int ShopId { get; set; }
-        
+        public virtual Shop Shop{ get; set; }
+
     }
 }
