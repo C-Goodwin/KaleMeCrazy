@@ -12,8 +12,9 @@ namespace KaleMeCrazy.Data
     {
         [Key]
         public int MenuId { get; set; }
-        [ForeignKey ("Shop")]
+        [ForeignKey (nameof(Shop))]
         public int ShopId { get; set; }
+        public virtual Shop Shop { get; set; }
         public List<MenuItem> MyProperty { get; set; }
     }
 }

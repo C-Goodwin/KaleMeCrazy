@@ -12,8 +12,9 @@ namespace KaleMeCrazy.Data
     {
         [Key]
         public int ItemId { get; set; }
-        [ForeignKey ("Menu")]
+        [ForeignKey (nameof(Menu))]
         public int MenuId { get; set; }
+        public virtual Menu Menu { get; set; }
         [Required]
         public string ItemName { get; set; }
         [Required]
