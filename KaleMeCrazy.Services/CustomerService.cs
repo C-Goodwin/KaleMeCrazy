@@ -10,24 +10,25 @@ namespace KaleMeCrazy.Services // This layer is how application interacts with d
 {
     public class CustomerService
     {
-        //private readonly Guid _userId; // This is a constuctor.
+        private readonly Guid _userid; // this is a constuctor.
 
-        //public CustomerService(Guid userId)
-        //{
-        //    _userId = userId;
-        //}
+        public CustomerService(Guid userid)
+        {
+            _userid = userid;
+        }
 
         public bool CreateCustomer(CustomerCreate model) // Model comes from <form></form>, or is created in Postman for testing.
         {
             var entity =
                 new Customer()
                 {
+                    CustomerId=model.CustomerId,
                     ShopId = model.ShopId,
                     Email = model.Email,
                     PhoneNumber = model.PhoneNumber,
                     Address = model.Address,
                     FullName = model.Name,
-                    CustomerId = model.CustomerId,
+                    OrderId=model.OrderId
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -42,7 +43,7 @@ namespace KaleMeCrazy.Services // This layer is how application interacts with d
                 var query =
                     ctx
                         .Customers
-                        .Where(e => e.ShopId == shopId ) // Changed from CustomerId to shopId
+                        .Where(e => e.ShopId == shopId && e.OwnerId == _userid) // Changed from CustomerId to shopId
                         .Select(
                             e =>
                                 new CustomerListItem
@@ -62,7 +63,7 @@ namespace KaleMeCrazy.Services // This layer is how application interacts with d
                 var entity =
                     ctx
                         .Customers
-                        .Single(e => e.CustomerId == id && e.ShopId == shop.ShopId); // * //
+                        .Single(e => e.CustomerId == id && e.ShopId == shop.ShopId && e.OwnerId ==_userid); // * //
                 return
                     new CustomerDetail
                     {

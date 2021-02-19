@@ -14,13 +14,22 @@ namespace KaleMeCrazy.WebAPI.Controllers // Controllers are where methods are pl
     [Authorize]
     public class CustomerController : ApiController
     {
+        private CustomerService CreateCustomerService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var customerService = new CustomerService(userId);
+            return customerService;
+        }
+
+        
+
         [HttpGet]
         public IHttpActionResult GetAllCustomers()
         {
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            CustomerService service = new CustomerService();
+            var service = CreateCustomerService();
             Shop shop = new Shop();
             var customer = service.GetCustomer(shop.ShopId);
             return Ok(customer);
@@ -34,7 +43,7 @@ namespace KaleMeCrazy.WebAPI.Controllers // Controllers are where methods are pl
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = new CustomerService();
+            var service = CreateCustomerService();
 
             if (!service.CreateCustomer(customer))
                 return InternalServerError();
@@ -42,11 +51,6 @@ namespace KaleMeCrazy.WebAPI.Controllers // Controllers are where methods are pl
             return Ok();
         }
 
-        //private CustomerService CreateCustomerService()
-        // {
-        //     var userId = Guid.Parse(User.Identity.GetUserId());
-        //     var customerService = new CustomerService(userId);
-        //     return customerService;
-        // }
+
     }
 }
