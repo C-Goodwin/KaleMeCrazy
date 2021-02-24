@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace KaleMeCrazy.Models
 {
-    class MenuItemListItem
+    public class MenuItemListItem
     {
+        public int ItemId { get; set; }
+
+        public int MenuId { get; set; }
+
+        public string ItemName { get; set; }
     }
 }

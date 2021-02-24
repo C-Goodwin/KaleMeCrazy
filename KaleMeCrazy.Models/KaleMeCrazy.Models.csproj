@@ -68,5 +68,11 @@
     <Compile Include="ShopEdit.cs" />
     <Compile Include="ShopListItem.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KaleMeCrazy.Data\KaleMeCrazy.Data.csproj">
+      <Project>{EE219747-978C-40E7-9661-0C78F09B8808}</Project>
+      <Name>KaleMeCrazy.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
