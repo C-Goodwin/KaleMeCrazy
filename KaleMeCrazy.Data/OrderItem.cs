@@ -11,6 +11,7 @@ namespace KaleMeCrazy.Data
     public class OrderItem
     {
         [Key]
+
         public int ItemId { get; set; }
 
         [ForeignKey (nameof(Order))]

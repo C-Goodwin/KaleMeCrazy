@@ -9,5 +9,14 @@ namespace KaleMeCrazy.WebAPI.Controllers
 {
     public class ShopController : ApiController
     {
+
+        private ShopService CreateNoteService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var shopService = new shopService(userId);
+            return shopService;
+        }
+
     }
+
 }
