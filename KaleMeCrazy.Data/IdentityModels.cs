@@ -44,6 +44,7 @@ namespace KaleMeCrazy.Data
                 .Conventions
                 .Remove<PluralizingTableNameConvention>();
 
+
             modelBuilder
                 .Configurations
                 .Add(new IdentityUserLoginConfiguration())

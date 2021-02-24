@@ -1,6 +1,7 @@
 ﻿using KaleMeCrazy.Data;
 using KaleMeCrazy.Models;
 using KaleMeCrazy.Services;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,7 +20,7 @@ namespace KaleMeCrazy.WebAPI.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            MenuService service = new MenuService();
+            MenuService service = CreatedMenuService();
 
             service.CreateMenu(menu);
 
@@ -30,7 +31,7 @@ namespace KaleMeCrazy.WebAPI.Controllers
         [HttpGet]
         public IHttpActionResult GetAllMenus()
         {
-            MenuService service = new MenuService();
+            MenuService service = CreatedMenuService();
             var menus = service.GetAllMenus();
             return Ok(menus);
         }
@@ -39,7 +40,7 @@ namespace KaleMeCrazy.WebAPI.Controllers
         [HttpGet]
         public IHttpActionResult GetAllMenusByShopId(int shopId)
         {
-            MenuService service = new MenuService();
+            MenuService service = CreatedMenuService();
             Shop shop = new Shop();
             var menus = service.GetAllMenusByShopId(shopId);
             return Ok(menus);
@@ -49,7 +50,7 @@ namespace KaleMeCrazy.WebAPI.Controllers
         [HttpGet]
         public IHttpActionResult GetMenuById(int id)
         {
-            MenuService service = new MenuService();
+            MenuService service = CreatedMenuService();
             var menu = service.GetMenuById(id);
             return Ok(menu);
         }
@@ -61,7 +62,7 @@ namespace KaleMeCrazy.WebAPI.Controllers
             if (!ModelState.IsValid)
                 return BadRequest(ModelState);
 
-            var service = new MenuService();
+            var service = CreatedMenuService();
 
             if (!service.UpdateMenu(menu))
                 return InternalServerError();
@@ -73,12 +74,20 @@ namespace KaleMeCrazy.WebAPI.Controllers
         [HttpDelete]
         public IHttpActionResult DeleteMenu(int id)
         {
-            var service = new MenuService();
+            var service = CreatedMenuService();
 
             if (!service.DeleteMenu(id))
                 return InternalServerError();
 
             return Ok();
+        }
+
+        // HELPER METHOD
+        private MenuService CreatedMenuService()
+        {
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var menuService = new MenuService(userId);
+            return menuService;
         }
     }
 }

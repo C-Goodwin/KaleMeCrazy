@@ -10,13 +10,20 @@ namespace KaleMeCrazy.Services
 {
     public class MenuService
     {
+        private readonly Guid _userId;
+        public MenuService(Guid userId)
+        {
+            _userId = userId;
+        }
+
         // POST
         public bool CreateMenu(MenuCreate model)
         {
             var entity =
                 new Menu()
                 {
-                    ShopId = model.ShopId
+                    ShopId = model.ShopId,
+                    OwnerId = _userId
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -26,11 +33,13 @@ namespace KaleMeCrazy.Services
             }
         }
 
+
         // GET (all menus for all shops)
         public IEnumerable<MenuListItem> GetAllMenus()
         {
             using (var ctx = new ApplicationDbContext())
             {
+
                 var query =
                     ctx
                         .Menus
@@ -39,7 +48,8 @@ namespace KaleMeCrazy.Services
                                 new MenuListItem
                                 {
                                     MenuId = e.MenuId,
-                                    Name = e.Name
+                                    Name = e.Name,
+
                                 }
                         );
 
@@ -56,6 +66,7 @@ namespace KaleMeCrazy.Services
                     ctx
                         .Menus
                         .Where(e => e.ShopId == shopId)
+
                         .Select(
                             e =>
                             new MenuListItem
@@ -108,7 +119,7 @@ namespace KaleMeCrazy.Services
         // DELETE
         public bool DeleteMenu(int menuId)
         {
-            using(var ctx = new ApplicationDbContext())
+            using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx

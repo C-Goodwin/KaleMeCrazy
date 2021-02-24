@@ -11,8 +11,13 @@ namespace KaleMeCrazy.Data
     {
         [Key]
         public int ShopId { get; set; }
+
+        [Required]
+        public Guid OwnerId { get; set; }
+
         [Required]
         public string Name { get; set; }
+
         [Required]
         public string Location { get; set; }
     }
