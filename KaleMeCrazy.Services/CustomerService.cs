@@ -77,5 +77,35 @@ namespace KaleMeCrazy.Services // This layer is how application interacts with d
                     };
             }
         }
+        public bool DeleteCustomer (int CustomerId)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = 
+                    ctx
+                        .Customers
+                        .Single(e => e.CustomerId == CustomerId && e.OwnerId == _userId);
+
+                ctx.Customers.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool UpdateCustomer(CustomerEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Customers
+                        .Single(e => e.CustomerId == model.CustomerId && e.OwnerId == _userid);
+
+                entity.FullName = model.FullName;
+                entity.Address = model.Address;
+                entity.Email = model.Email;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
     }
 }

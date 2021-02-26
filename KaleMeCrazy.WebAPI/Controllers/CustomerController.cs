@@ -21,8 +21,6 @@ namespace KaleMeCrazy.WebAPI.Controllers // Controllers are where methods are pl
             return customerService;
         }
 
-        
-
         [HttpGet]
         public IHttpActionResult GetAllCustomers()
         {
@@ -34,8 +32,6 @@ namespace KaleMeCrazy.WebAPI.Controllers // Controllers are where methods are pl
             var customer = service.GetCustomer(shop.ShopId);
             return Ok(customer);
         }
-
-        //There was a change
 
         [HttpPost]
         public IHttpActionResult CreateCustomer([FromBody] CustomerCreate customer)
@@ -50,7 +46,30 @@ namespace KaleMeCrazy.WebAPI.Controllers // Controllers are where methods are pl
 
             return Ok();
         }
+        [HttpPut]
+        public IHttpActionResult EditCustomer(CustomerEdit customer)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
 
+            var service = CreateCustomerService();
 
+            if (!service.UpdateCustomer(customer))
+                return InternalServerError();
+
+            return Ok();
+        }
+
+        [HttpDelete]
+        public IHttpActionResult DeleteCustomer(int CustomerId)
+        {
+            var service = CreateCustomerService();
+
+            if (!service.DeleteCustomer(CustomerId))
+                return InternalServerError();
+
+            return Ok();
+
+        }
     }
 }
