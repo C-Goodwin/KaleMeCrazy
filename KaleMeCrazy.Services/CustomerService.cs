@@ -84,7 +84,7 @@ namespace KaleMeCrazy.Services // This layer is how application interacts with d
                 var entity = 
                     ctx
                         .Customers
-                        .Single(e => e.CustomerId == CustomerId && e.OwnerId == _userId);
+                        .Single(e => e.CustomerId == CustomerId && e.OwnerId == _userid);
 
                 ctx.Customers.Remove(entity);
 
