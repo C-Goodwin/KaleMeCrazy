@@ -17,6 +17,9 @@ namespace KaleMeCrazy.Data
         [ForeignKey(nameof(Order))]
         public int OrderId { get; set; }
         public virtual Order Order { get; set; }
+        [ForeignKey (nameof(Order))]
+        public int OrderId { get; set; }
+        public virtual Order Order { get; set; }
         public bool IsMember { get; set; }
     }
 }
