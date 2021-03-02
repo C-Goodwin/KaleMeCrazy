@@ -1,12 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace KaleMeCrazy.Models
 {
-    class CustomerListItem
+    public class CustomerListItem // (GET ALL)
     {
+        public int CustomerId { get; set; }
+        
+        public string FullName { get; set; }
     }
 }

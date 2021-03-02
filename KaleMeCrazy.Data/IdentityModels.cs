@@ -27,12 +27,13 @@ namespace KaleMeCrazy.Data
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-        
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
-        public DbSet<Customer> Customers { get; set; }
+        
+        public DbSet<Customer> Customers { get; set; } // Create table with customer properties called Customers
         public DbSet<Menu> Menus { get; set; }
         public DbSet<MenuItem> MenuItems { get; set; }
         public DbSet<Order> Orders { get; set; }
