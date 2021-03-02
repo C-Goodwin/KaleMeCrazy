@@ -11,13 +11,14 @@ namespace KaleMeCrazy.Data
     public class OrderItem
     {
         [Key]
-
         public int ItemId { get; set; }
-
         [ForeignKey (nameof(Order))]
         public int OrderId { get; set; }
         public virtual Order Order { get; set; }
-
+        public int ItemId { get; set; }
+        [ForeignKey (nameof(Order))]
+        public int OrderId { get; set; }
+        public virtual Order Order { get; set; }
         public int Quantity { get; set; }
     }
 }
