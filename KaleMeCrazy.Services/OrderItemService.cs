@@ -11,22 +11,22 @@ namespace KaleMeCrazy.Services
     class OrderItemService
     {
         // POST
-        public bool CreateMenuItem(OrderItemCreate model)
-        {
-            var entity =
-                new OrderItem()
-                {
-                    ItemId = model.ItemId,
-                    OrderId = model.OrderId
-                };
+        //public bool CreateMenuItem(OrderItemCreate model)
+        //{
+        //    var entity =
+        //        new OrderItem()
+        //        {
+        //            ItemId = model.ItemId,
+        //            OrderId = model.OrderId
+        //        };
 
-            using (var ctx = new ApplicationDbContext())
-            {
-                ctx.OrderItems.Add(entity);
-                return ctx.SaveChanges() == 1;
-            }
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        ctx.OrderItems.Add(entity);
+        //        return ctx.SaveChanges() == 1;
+        //    }
 
-        }
+        //}
 
         // GET (all menu items for all menus for all shops)
         public IEnumerable<MenuItemListItem> GetAllMenuItems()
@@ -98,38 +98,38 @@ namespace KaleMeCrazy.Services
 
 
         // PUT
-        public bool UpdateMenuItem(MenuItemEdit model)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity =
-                    ctx
-                        .MenuItems
-                        .Single(e => e.ItemId == model.ItemId && e.OwnerId == _userId);
+        //public bool UpdateMenuItem(MenuItemEdit model)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var entity =
+        //            ctx
+        //                .MenuItems
+        //                .Single(e => e.ItemId == model.ItemId && e.OwnerId == _userId);
 
-                entity.ItemId = model.ItemId;
-                entity.ItemName = model.ItemName;
-                entity.Description = model.Description;
-                entity.Price = model.Price;
+        //        entity.ItemId = model.ItemId;
+        //        entity.ItemName = model.ItemName;
+        //        entity.Description = model.Description;
+        //        entity.Price = model.Price;
 
-                return ctx.SaveChanges() == 1;
-            }
-        }
+        //        return ctx.SaveChanges() == 1;
+        //    }
+        //}
 
         // DELETE
-        public bool DeleteMenuItem(int itemId)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var entity =
-                    ctx
-                        .MenuItems
-                        .Single(e => e.ItemId == itemId && e.OwnerId == _userId);
+        //public bool DeleteMenuItem(int itemId)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var entity =
+        //            ctx
+        //                .MenuItems
+        //                .Single(e => e.ItemId == itemId && e.OwnerId == _userId);
 
-                ctx.MenuItems.Remove(entity);
+        //        ctx.MenuItems.Remove(entity);
 
-                return ctx.SaveChanges() == 1;
-            }
-        }
+        //        return ctx.SaveChanges() == 1;
+        //    }
+        //}
     }
 }
