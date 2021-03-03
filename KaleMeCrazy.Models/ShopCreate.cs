@@ -20,5 +20,7 @@ namespace KaleMeCrazy.Models
         public string Location { get; set; }
 
         public DateTime CreatedUtc { get; set; }
+
+        public int MenuItemId { get; set; }
     }
 }
