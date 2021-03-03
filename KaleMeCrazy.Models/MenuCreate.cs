@@ -13,6 +13,8 @@ namespace KaleMeCrazy.Models
         [Required]
         public int ShopId { get; set; }
 
+        public string Name { get; set; }
+
         public Guid OwnerId { get; set; }
     }
 }

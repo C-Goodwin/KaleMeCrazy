@@ -23,6 +23,7 @@ namespace KaleMeCrazy.Services
                 new Menu()
                 {
                     ShopId = model.ShopId,
+                    Name = model.Name,
                     OwnerId = _userId
                 };
 
