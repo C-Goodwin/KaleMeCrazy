@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -15,9 +15,9 @@ namespace KaleMeCrazy.Data
         [ForeignKey("MenuItem")]
         public int ItemId { get; set; }
         public virtual MenuItem MenuItem{ get; set; }
-        [ForeignKey ("Order")]
+        [ForeignKey (nameof(Order))]
         public int OrderId { get; set; }
-        public virtual Order Order{ get; set; }
+        public virtual Order Order { get; set; }
         public int Quantity { get; set; }
     }
 }
