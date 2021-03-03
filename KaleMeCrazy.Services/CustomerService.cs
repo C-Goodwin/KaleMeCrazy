@@ -29,7 +29,7 @@ namespace KaleMeCrazy.Services // This layer is how application interacts with d
                     PhoneNumber = model.PhoneNumber,
                     Address = model.Address,
                     FullName = model.Name,
-                    OrderId=model.OrderId
+                    //OrderId=model.OrderId
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -70,7 +70,7 @@ namespace KaleMeCrazy.Services // This layer is how application interacts with d
                     {
                         CustomerId = entity.CustomerId,
                         FullName = entity.FullName,
-                        OrderId = entity.OrderId,
+                        //OrderId = entity.OrderId,
                         Address = entity.Address,
                         PhoneNumber = entity.PhoneNumber,
                         Email = entity.Email,
