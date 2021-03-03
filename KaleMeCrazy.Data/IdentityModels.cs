@@ -54,10 +54,10 @@ namespace KaleMeCrazy.Data
                 .Add(new IdentityUserRoleConfiguration());
         }
 
-        public int SaveChanges()
-        {
-            throw new NotImplementedException();
-        }
+       ////  public int SaveChanges()
+       // {
+       //     throw new NotImplementedException();
+       // }
     }
     public class IdentityUserLoginConfiguration : EntityTypeConfiguration<IdentityUserLogin>
     {
