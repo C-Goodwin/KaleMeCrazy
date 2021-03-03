@@ -131,4 +131,5 @@ namespace KaleMeCrazy.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+    }
 }

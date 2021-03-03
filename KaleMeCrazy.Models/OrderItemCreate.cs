@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace KaleMeCrazy.Models
 {
-    class OrderItemCreate
+    public class OrderItemCreate
     {
     }
 }
