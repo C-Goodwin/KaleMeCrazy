@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace KaleMeCrazy.Services
 {
-    class OrderItemService
+    public class OrderItemService
     {
         // POST
-        public bool CreateMenuItem(OrderItemCreate model)
+        public bool CreateOrderItem(OrderItemCreate model)
         {
             var entity =
                 new OrderItem()
@@ -28,105 +28,60 @@ namespace KaleMeCrazy.Services
 
         }
 
-        // GET (all menu items for all menus for all shops)
-        public IEnumerable<MenuItemListItem> GetAllMenuItems()
+       
+        // GET (get orderitem by orderid)
+        public IEnumerable<OrderItemListItem> GetOrderItemsByOrderId(int orderId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
-                        .MenuItems
-                        .Select(
-                        e =>
-                            new MenuItemListItem
-                            {
-                                MenuId = e.MenuId,
-                                ItemId = e.ItemId,
-                                ItemName = e.ItemName
-                            }
-                        );
-
-                return query.ToArray();
-            }
-        }
-
-        // GET (get menuitem by menuid)
-        public IEnumerable<MenuItemListItem> GetMenuItemsByMenuId(int menuId)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var query =
-                    ctx
-                        .MenuItems
-                        .Where(e => e.MenuId == menuId)
+                        .OrderItems
+                        .Where(e => e.OrderId == orderId)
                         .Select(
                             e =>
-                                new MenuItemListItem
+                                new OrderItemListItem
                                 {
-                                    MenuId = e.MenuId,
+                                    OrderId = e.OrderId,
                                     ItemId = e.ItemId,
-                                    ItemName = e.ItemName
+                                    Quantity = e.Quantity,
                                 }
                         );
 
                 return query.ToArray();
             }
         }
-
-        // GET (get menuitem by item Id)
-        public IEnumerable<MenuItemListItem> GetMenuItemByItemId(int itemId)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var query =
-                    ctx
-                        .MenuItems
-                        .Where(e => e.ItemId == itemId)
-                        .Select(
-                            e =>
-                                new MenuItemListItem
-                                {
-                                    MenuId = e.MenuId,
-                                    ItemId = e.ItemId,
-                                    ItemName = e.ItemName
-                                }
-                            );
-
-                return query.ToArray();
-            }
-        }
-
 
         // PUT
-        public bool UpdateMenuItem(MenuItemEdit model)
+        public bool UpdateOrderItem(OrderItemEdit model)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                        .MenuItems
-                        .Single(e => e.ItemId == model.ItemId && e.OwnerId == _userId);
+                        .OrderItems
+                        .Single(e => e.ItemId == model.ItemId && e.OrderId == model.OrderId);
 
                 entity.ItemId = model.ItemId;
-                entity.ItemName = model.ItemName;
-                entity.Description = model.Description;
-                entity.Price = model.Price;
+                entity.Id = model.Id;
+                entity.Quantity = model.Quantity;
+                entity.OrderId = model.OrderId;
 
                 return ctx.SaveChanges() == 1;
             }
         }
 
         // DELETE
-        public bool DeleteMenuItem(int itemId)
+        public bool DeleteOrderItem(int orderId, int itemId)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
-                        .MenuItems
-                        .Single(e => e.ItemId == itemId && e.OwnerId == _userId);
+                        .OrderItems
+                        .Single(e => e.ItemId == itemId && e.OrderId == orderId);
 
-                ctx.MenuItems.Remove(entity);
+                ctx.OrderItems.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
             }

@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace KaleMeCrazy.Models
 {
-    class OrderListItem
+    public class OrderListItem
     {
+        public int OrderId { get; set; }
+        public int CustomerId { get; set; }
+        public double TotalPrice { get; set; }
+        public int ShopId { get; set; }
     }
 }
