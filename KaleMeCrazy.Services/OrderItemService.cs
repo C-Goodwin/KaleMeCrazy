@@ -1,4 +1,4 @@
-﻿using KaleMeCrazy.Data;
+using KaleMeCrazy.Data;
 using KaleMeCrazy.Models;
 using System;
 using System.Collections.Generic;
@@ -28,7 +28,6 @@ namespace KaleMeCrazy.Services
 
         }
 
-       
         // GET (get orderitem by orderid)
         public IEnumerable<OrderItemListItem> GetOrderItemsByOrderId(int orderId)
         {

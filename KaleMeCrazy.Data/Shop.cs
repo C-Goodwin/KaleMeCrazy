@@ -21,10 +21,9 @@ namespace KaleMeCrazy.Data
 
         [Required]
         public string Location { get; set; }
+        public string Menu { get; set; }
 
-
-       [ForeignKey(nameof(MenuItem))]
-        public invirtualt? MenuItemId { get; set; }
+        public int? MenuItemId { get; set; }
 
     }
 }
