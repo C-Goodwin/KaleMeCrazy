@@ -37,7 +37,7 @@ namespace KaleMeCrazy.WebAPI.Controllers
 
         // GET (all for one shop)
         [HttpGet]
-        public IHttpActionResult GetAllMenusByShopId(int shopId)
+        public IHttpActionResult GetAllOrdersByShopId(int shopId)
         {
             OrderService service = new OrderService();
             var orders = service.GetAllOrdersByShopId(shopId);
