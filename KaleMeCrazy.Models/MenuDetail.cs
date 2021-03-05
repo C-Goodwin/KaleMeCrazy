@@ -15,6 +15,6 @@ namespace KaleMeCrazy.Models
 
         public string Name { get; set; }
 
-        public virtual List<MenuItem> MenuItemList { get; set; }
+        public virtual List<MenuItemListItem> MenuItemList { get; set; }
     }
 }

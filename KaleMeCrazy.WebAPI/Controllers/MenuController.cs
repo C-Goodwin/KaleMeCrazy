@@ -13,6 +13,7 @@ namespace KaleMeCrazy.WebAPI.Controllers
 {
     public class MenuController : ApiController
     {
+        // DONE
         // POST
         [HttpPost]
         public IHttpActionResult CreateMenu(MenuCreate menu)
@@ -27,6 +28,7 @@ namespace KaleMeCrazy.WebAPI.Controllers
             return Ok();
         }
 
+        // DONE
         // Get (all for all shops)
         [HttpGet]
         public IHttpActionResult GetAllMenus()
@@ -36,6 +38,7 @@ namespace KaleMeCrazy.WebAPI.Controllers
             return Ok(menus);
         }
 
+        // DONE
         // GET (all for one shop)
         [HttpGet]
         public IHttpActionResult GetAllMenusByShopId(int shopId)
@@ -46,6 +49,7 @@ namespace KaleMeCrazy.WebAPI.Controllers
             return Ok(menus);
         }
 
+        // DONE
         // GET (by id)
         [HttpGet]
         public IHttpActionResult GetMenuById(int id)
@@ -55,6 +59,7 @@ namespace KaleMeCrazy.WebAPI.Controllers
             return Ok(menu);
         }
 
+        // DONE
         // PUT
         [HttpPut]
         public IHttpActionResult UpdateMenu(MenuEdit menu)
@@ -70,6 +75,7 @@ namespace KaleMeCrazy.WebAPI.Controllers
             return Ok();
         }
 
+        // DONE
         // DELETE
         [HttpDelete]
         public IHttpActionResult DeleteMenu(int id)
