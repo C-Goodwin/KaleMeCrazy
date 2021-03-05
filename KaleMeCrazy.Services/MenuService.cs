@@ -96,7 +96,7 @@ namespace KaleMeCrazy.Services
                         MenuId = entity.MenuId,
                         ShopId = entity.ShopId,
                         Name = entity.Name,
-                        MenuItemList = entity.MenuItemList
+                        MenuItemList = entity.MenuItemList.Select(e => new MenuItemListItem {ItemId = e.ItemId, MenuId = e.MenuId, ItemName = e.ItemName }).ToList()
                     };
             }
         }
