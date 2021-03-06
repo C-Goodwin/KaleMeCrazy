@@ -20,17 +20,17 @@
 
 * **Register A Shop** Post: https://localhost:44382/api/account/register
 
-**Geta Bearer Token** Get:https://localhost:44382/token
+* **Geta Bearer Token** Get:https://localhost:44382/token
 
-**Get A Shop** Get: https://localhost:44382/api/shop
+* **Get A Shop** Get: https://localhost:44382/api/shop
 
-**Get A Shop By ID** https://localhost:44382/api/shop/1
+* **Get A Shop By ID** https://localhost:44382/api/shop/1
 
-**Create A Shop** Post: https://localhost:44382/api/shop
+* **Create A Shop** Post: https://localhost:44382/api/shop
 
-**Update A Shop** Put: https://localhost:44382/api/shop
+* **Update A Shop** Put: https://localhost:44382/api/shop
 
-**Delete A Shop** Delete: https://localhost:44382/api/shop/3
+* **Delete A Shop** Delete: https://localhost:44382/api/shop/3
 
 
 
