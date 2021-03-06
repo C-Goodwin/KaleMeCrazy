@@ -16,11 +16,11 @@
 
 ### Test Shop
 
-*To completely test the shop CRUD in Postman you will need to validate the "Body" of each method. When making changes to the shop opject you will need to specifythe ID before updating or deleting any existing shop object.*
+*To completely test the shop CRUD in Postman you will need to validate the "Body" of each method. When making changes to the shop object you will need to specify the ID before updating or deleting any existing shop object.*
 
 * **Register A Shop** Post: https://localhost:44382/api/account/register
 
-* **Geta Bearer Token** Get:https://localhost:44382/token
+* **Get Bearer Token** Get:https://localhost:44382/token
 
 * **Get A Shop** Get: https://localhost:44382/api/shop
 
@@ -31,6 +31,35 @@
 * **Update A Shop** Put: https://localhost:44382/api/shop
 
 * **Delete A Shop** Delete: https://localhost:44382/api/shop/3
+
+### Test Menu
+
+*To completely test the Menu CRUD in Postman you will need to validate the "Body" of each method.  When making changes to the Menu object you will need to specify the ID or ID's needed before getting, updating, or deleting any existing Menu object. If creating a Menu object, a unique ID will be automatically generated within entity framework.*
+
+* **Register A User** POST: https://localhost:44382/api/account/register 
+
+* **Get Bearer Token** GET: https://localhost:44382/token
+
+* **Create Menu** POST: https://localhost:44382/api/Menu
+*Must include in body ----->
+*Key: ShopId     Value: {id/int}
+*Key: Name       Value: {name/string}
+
+* **Get Menus For ALL Shops** GET: https://localhost:44382/api/Menu
+
+* **Get Menus For ONE Shop** GET: https://localhost:44382/api/Menu?ShopId={id}
+*Must include {ShopId} at end of url
+
+* **Get ONE Menu By Id** GET: https://localhost:44382/api/Menu/{id}
+*Must include {MenuId} at end of url
+
+* **Update Menu** PUT: https://localhost:44382/api/Menu/{id}
+*Must include in body ----->
+*Key: MenuId     Value: {id/int}
+*Key: Name       Value: {name/string}
+
+* **Delete Menu** DELETE: https://localhost:44382/api/Menu/{id}
+*Must include {MenuId} at end of url
 
 
 
