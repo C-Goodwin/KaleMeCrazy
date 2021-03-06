@@ -44,8 +44,11 @@
 *Must include in body ----->
 Key    | Value
 ----   |------
-MenuId | {id/int}
-Name   | {name/string}
+
+First Header  | Second Header
+------------- | -------------
+Content Cell  | Content Cell
+Content Cell  | Content Cell
 
 * **Get Menus For ALL Shops** GET: https://localhost:44382/api/Menu
 
