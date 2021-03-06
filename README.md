@@ -41,10 +41,10 @@
 * **Get Bearer Token** GET: https://localhost:44382/token
 
 * **Create Menu** POST: https://localhost:44382/api/Menu
-Key           | Value
-------------- | -------------
-ShopId        | Content Cell
-Name          | Content Cell
+| Key    | Value         |
+|--------|---------------|
+| ShopId | {id/int}      |
+| Name   | {name/string} |
 
 * **Get Menus For ALL Shops** GET: https://localhost:44382/api/Menu
 
