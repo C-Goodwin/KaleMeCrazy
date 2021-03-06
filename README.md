@@ -42,8 +42,10 @@
 
 * **Create Menu** POST: https://localhost:44382/api/Menu
 *Must include in body ----->
-*Key: ShopId     Value: {id/int}
-*Key: Name       Value: {name/string}
+Key    | Value
+----   |------
+MenuId | {id/int}
+Name   | {name/string}
 
 * **Get Menus For ALL Shops** GET: https://localhost:44382/api/Menu
 
