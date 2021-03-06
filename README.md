@@ -17,7 +17,8 @@
 ### Test Shop
 
 *To completely test the shop CRUD in Postman you will need to validate the "Body" of each method. When making changes to the shop opject you will need to specifythe ID before updating or deleting any existing shop object.*
-**Register A Shop** Post: https://localhost:44382/api/account/register
+
+* **Register A Shop** Post: https://localhost:44382/api/account/register
 
 **Geta Bearer Token** Get:https://localhost:44382/token
 
