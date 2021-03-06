@@ -42,13 +42,10 @@
 
 * **Create Menu** POST: https://localhost:44382/api/Menu
 *Must include in body ----->
-Key    | Value
-----   |------
-
-First Header  | Second Header
+Key           | Value
 ------------- | -------------
-Content Cell  | Content Cell
-Content Cell  | Content Cell
+ShopId        | {id/int}
+Name          | {name/string}
 
 * **Get Menus For ALL Shops** GET: https://localhost:44382/api/Menu
 
