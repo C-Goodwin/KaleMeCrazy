@@ -41,6 +41,7 @@
 * **Get Bearer Token** GET: https://localhost:44382/token
 
 * **Create Menu** POST: https://localhost:44382/api/Menu
+* 
 | Key    | Value       |
 |--------|-------------|
 | ShopId | id/int      |
