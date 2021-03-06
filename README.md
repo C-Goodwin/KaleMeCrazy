@@ -58,8 +58,11 @@
 
 * **Update Menu** PUT: https://localhost:44382/api/Menu/{id}
 *Must include in body ----->
-*Key: MenuId     Value: {id/int}
-*Key: Name       Value: {name/string}
+
+| Key    | Value       |
+|--------|-------------|
+| MenuId | id/int      |
+| Name   | name/string |
 
 * **Delete Menu** DELETE: https://localhost:44382/api/Menu/{id}
 *Must include {MenuId} at end of url
