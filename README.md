@@ -20,3 +20,7 @@
  * Joshua Erkman
  * Ric Wallace
 
+
+### Resources
+* https://guides.github.com/pdfs/markdown-cheatsheet-online.pdf
+* https://video.search.yahoo.com/search/video;_ylt=AwrJ7Jryk0Ngj0MAizdXNyoA;_ylu=Y29sbwNiZjEEcG9zAzEEdnRpZAMEc2VjA3BpdnM-?p=how+to+create+a+read+me+in+visual+studio&fr2=piv-web&fr=mcafee#id=1&vid=3535e83b1bccb94a403f8ebd8c32ad01&action=view
