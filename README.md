@@ -57,7 +57,7 @@
 *Must include {MenuId} at end of url
 
 * **Update Menu** PUT: https://localhost:44382/api/Menu/{id}
-*Must include in body ----->
+* Must include in body ----->
 
 | Key    | Value       |
 |--------|-------------|
