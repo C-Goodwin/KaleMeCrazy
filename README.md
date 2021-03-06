@@ -42,6 +42,7 @@
 
 * **Create Menu** POST: https://localhost:44382/api/Menu
 * Must include in body --->
+
 | Key    | Value       |
 |--------|-------------|
 | ShopId | id/int      |
