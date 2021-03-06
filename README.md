@@ -41,31 +41,31 @@
 * **Get Bearer Token** GET: https://localhost:44382/token
 
 * **Create Menu** POST: https://localhost:44382/api/Menu
-* Must include in body --->
+  * Must include in body --->
 
-| Key    | Value       |
-|--------|-------------|
-| ShopId | id/int      |
-| Name   | name/string |
+      | Key    | Value       |
+      |--------|-------------|
+      | ShopId | id/int      |
+      | Name   | name/string |
 
 * **Get Menus For ALL Shops** GET: https://localhost:44382/api/Menu
 
 * **Get Menus For ONE Shop** GET: https://localhost:44382/api/Menu?ShopId={id}
-*Must include {ShopId} at end of url
+  * Must include {ShopId} at end of url
 
 * **Get ONE Menu By Id** GET: https://localhost:44382/api/Menu/{id}
-*Must include {MenuId} at end of url
+  * Must include {MenuId} at end of url
 
 * **Update Menu** PUT: https://localhost:44382/api/Menu/{id}
-* Must include in body ----->
+  * Must include in body ----->
 
-| Key    | Value       |
-|--------|-------------|
-| MenuId | id/int      |
-| Name   | name/string |
+      | Key    | Value       |
+      |--------|-------------|
+      | MenuId | id/int      |
+      | Name   | name/string |
 
 * **Delete Menu** DELETE: https://localhost:44382/api/Menu/{id}
-*Must include {MenuId} at end of url
+  * Must include {MenuId} at end of url
 
 
 
