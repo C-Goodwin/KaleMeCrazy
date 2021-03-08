@@ -106,6 +106,79 @@
 * **Delete MenuItem** DELETE: {localhost}/api/MenuItem/{id}
   * Must include {ItemId} at end of url
 
+### Test Order
+
+*To completely test the Order CRUD in Postman you will need to validate the "Body" of each method.  When making changes to the Order object you will need to specify the ID(s) needed before getting, updating, or deleting any existing Order object. When creating an Order object, a unique ID will be generated within the entity framework.*
+
+* **Register A User**  POST https://44382/api/account/register 
+
+* **Get Bearer Token**  GET https://44382/token
+
+* * **Create Order** POST https://44382/api/Order
+  * Must include in body
+
+      | Key         | Value          |
+      |-------------|----------------|
+      | ShopId      | id/int         |
+      | CustomerId  | id/int         |
+      | TotalPrice  | decimal number |
+      
+* **Get All Orders** GET https://44382/api/Order
+
+* * **Get All Orders For ONE Shop** GET https://44382/api/Order?shopId={shopId}
+  *  * Replace {shopId} with the id of the shop you would like to view
+  
+* **Get Order by OrderId** GET https://44382/api/Order/{id}
+ * * Replace {id} with the id of the order you would like to view
+
+* **Update Order** PUT https://44382/api/Order/{id}
+  * Must include in body
+  * Replace {id} with the id of the order you want to update
+
+      | Key         | Value          |
+      |-------------|----------------|
+      | OrderId     | id/int         |
+      | ShopId      | id/int         |
+      | CustomerId  | id/int         |
+      | TotalPrice  | decimal number |
+
+* **Delete Order** DELETE https://44382/api/Order/{id]
+  * Replace {id} with the id of the order you want to delete
+
+### Test OrderItem
+
+*To completely test the Order CRUD in Postman you will need to validate the "Body" of each method.  When making changes to the Order object you will need to specify the ID(s) needed before getting, updating, or deleting any existing Order object. When creating an Order object, a unique ID will be generated within the entity framework.*
+
+* **Register A User**  POST https://44382/api/account/register 
+
+* **Get Bearer Token**  GET https://44382/token
+
+* * **Create OrderItem** POST https://44382/api/OrderItem
+  * Must include in body
+
+      | Key      | Value       |
+      |----------|-------------|
+      | ItemId   |   id/int    |
+      | OrderId  |   id/int    |
+      | Quantity |    int      |
+      
+* **Get OrderItem by OrderId** GET https://44382/api/OrderItem/{id}
+* * * Replace {id} with the id of the order you would like to view
+
+* **Update OrderItem** PUT https://44382/api/OrderItem/{id}
+  * Must include in body
+  * Replace {id} with the id of the orderItem you want to update
+
+      | Key         | Value          |
+      |-------------|----------------|
+      |     Id      |    id/int      |
+      |   ItemId    |    id/int      |
+      |   OrderId   |    id/int      |
+      |  Quantity   |     int        |
+
+* **Delete OrderItem** DELETE https://44382/api/OrderItem?orderId={orderId}&itemId={itemId}
+  * Replace {orderId} with the id of the order you want to delete the item from and itemId
+    with the id of the item you want to delete
 
 ### Group Members
 * Cassandra Goodwin
