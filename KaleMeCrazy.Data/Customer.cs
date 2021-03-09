@@ -22,15 +22,13 @@ namespace KaleMeCrazy.Data // *UserID in ElevenNote is ShopID in this project* *
        // [ForeignKey(nameof(Order))]
        // public int OrderId { get; set; }
        // public virtual Order Order { get; set; } // Navigation property, OrderId looks to this to get information about an EXISTING order
-       
-
 
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
         
         [ForeignKey(nameof(Shop))]
-        public int ShopId { get; set; }
+        public int? ShopId { get; set; }
         public virtual Shop Shop { get; set; }
     }
 }

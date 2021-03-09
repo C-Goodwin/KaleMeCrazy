@@ -11,11 +11,13 @@ namespace KaleMeCrazy.Services // This layer is how application interacts with d
     public class CustomerService
     {
         // THIS IS A TEST ...
-        private readonly Guid _userid; // this is a constuctor.
+        private readonly Guid _userid;
 
+        // this is a constuctor.
         public CustomerService(Guid userid)
         {
             _userid = userid;
+          
         }
 
         public bool CreateCustomer(CustomerCreate model) // Model comes from <form></form>, or is created in Postman for testing.
@@ -23,7 +25,8 @@ namespace KaleMeCrazy.Services // This layer is how application interacts with d
             var entity =
                 new Customer()
                 {
-                    CustomerId=model.CustomerId,
+  
+                    OwnerId=_userid,
                     ShopId = model.ShopId,
                     Email = model.Email,
                     PhoneNumber = model.PhoneNumber,
@@ -37,14 +40,14 @@ namespace KaleMeCrazy.Services // This layer is how application interacts with d
                 return ctx.SaveChanges() == 1;
             }
         }
-        public IEnumerable<CustomerListItem> GetCustomer(int shopId)
+        public IEnumerable<CustomerListItem> GetCustomers()
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var query =
                     ctx
                         .Customers
-                        .Where(e => e.ShopId == shopId && e.OwnerId == _userid) // Changed from CustomerId to shopId
+                        .Where(e =>  e.OwnerId == _userid) // Changed from CustomerId to shopId
                         .Select(
                             e =>
                                 new CustomerListItem
@@ -53,18 +56,17 @@ namespace KaleMeCrazy.Services // This layer is how application interacts with d
                                     FullName = e.FullName,
                                 }
                        );
-                 return query.ToArray();
-                   
+                 return query.ToArray();   
             }
         }
-        public CustomerDetail GetCustomerById(int id, Shop shop)
+        public CustomerDetail GetCustomerById(int id)
         {
             using (var ctx = new ApplicationDbContext())
             {
                 var entity =
                     ctx
                         .Customers
-                        .Single(e => e.CustomerId == id && e.ShopId == shop.ShopId && e.OwnerId ==_userid); // * //
+                        .Single(e => e.CustomerId == id  && e.OwnerId ==_userid); // * //
                 return
                     new CustomerDetail
                     {
@@ -74,7 +76,7 @@ namespace KaleMeCrazy.Services // This layer is how application interacts with d
                         Address = entity.Address,
                         PhoneNumber = entity.PhoneNumber,
                         Email = entity.Email,
-                        ShopId = entity.ShopId,
+                        //ShopId = entity.ShopId,
                     };
             }
         }

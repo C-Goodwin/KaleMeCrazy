@@ -13,66 +13,107 @@ namespace KaleMeCrazy.WebAPI.Controllers
 {
     public class ShopController : ApiController
     {
+        private readonly Guid _userId;
+
         private ShopService CreateShopService()
         {
-            var shopId = Guid.Parse(User.Identity.GetUserId());
-            var shopService = new ShopService(shopId);
-            return shopService;
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new ShopService(userId);
+            return service;
         }
 
 
-        [HttpGet]
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult Post(ShopCreate shopCreate)
         {
-            ShopService shopservice = CreateShopService();
-
-            var shop = shopservice.GetShops();
-            return Ok(shop);
-        }
-
-        [HttpPost]
-        public IHttpActionResult Post([FromBody] ShopCreate shop
-            )
-        {
+            if (shopCreate == null)
+            {
+                return BadRequest();
+            }
             if (!ModelState.IsValid)
+            {
                 return BadRequest(ModelState);
-
+            }
             var service = CreateShopService();
 
-            if (!service.CreateShop(shop))
+            if (!service.CreateShop(shopCreate))
+            {
                 return InternalServerError();
+            }
 
             return Ok();
         }
 
         [HttpGet]
-        //need to get all of the shops
-        public IHttpActionResult Get()
+        public IHttpActionResult Get() 
         {
             var service = CreateShopService();
             var shops = service.GetShops();
+            if (shops==null)
+            {
+                return InternalServerError();
+            }
             return Ok(shops);
         }
 
-        [HttpPut]
-        public IHttpActionResult Put(ShopEdit Shop)
+        [HttpGet]
+        public IHttpActionResult Get(int id)
         {
+            var service = CreateShopService();
+
+            if (id<1)
+            {
+                return BadRequest();
+            }
+
+            var shop = service.GetById(id);
+
+            if (shop == null)
+            {
+                return InternalServerError();
+            }
+
+            return Ok(shop);
+
+            
+        }
+
+        [HttpPut]
+        public IHttpActionResult Put (ShopEdit shop)
+        {
+            if (shop==null)
+            {
+                return BadRequest();
+            }
+
             if (!ModelState.IsValid)
+            {
                 return BadRequest(ModelState);
+            }
 
             var service = CreateShopService();
 
-            if (!service.UpdateShop(Shop))
+            var isSuccessful = service.UpdateShop(shop);
+            if (!isSuccessful)
+            {
                 return InternalServerError();
+            }
 
             return Ok();
         }
 
         [HttpDelete]
-        public IHttpActionResult Delete(int id)
+        public IHttpActionResult DeleteStore(int id) 
         {
+            if (id<1)
+            {
+                return BadRequest(); 
+            }
+
             var service = CreateShopService();
-            if (!service.DeleteShop(id))
+
+            var isSuccesfsful = service.DeleteShop(id);
+
+            if (!isSuccesfsful)
             {
                 return InternalServerError();
             }
@@ -81,5 +122,3 @@ namespace KaleMeCrazy.WebAPI.Controllers
         }
     }
 }
-
-

@@ -14,13 +14,13 @@ namespace KaleMeCrazy.Models
         [MaxLength(50, ErrorMessage = "There are too many characters in thes field")]
         public string Name { get; set; }
 
-        [MaxLength(10000)]
+       // [MaxLength(10000)]
         public string Menu { get; set; }
 
         public string Location { get; set; }
 
         public DateTime CreatedUtc { get; set; }
 
-        public int MenuItemId { get; set; }
+       // public int MenuItemId { get; set; }
     }
 }

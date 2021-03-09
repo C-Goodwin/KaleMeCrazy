@@ -83,7 +83,7 @@ namespace KaleMeCrazy.WebAPI.Controllers
         }
 
         // HELPER METHOD
-        private MenuService CreatedMenuService()
+        public MenuService CreatedMenuService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
             var menuService = new MenuService(userId);

@@ -16,7 +16,7 @@ namespace KaleMeCrazy.Services
             var entity =
                 new Order()
                 {
-                    ShopId =  model.ShopId,
+                    //ShopId =  model.ShopId,
                     CustomerId = model.CustomerId,
                     TotalPrice = model.TotalPrice,
                 };
@@ -43,7 +43,7 @@ namespace KaleMeCrazy.Services
                                 new OrderListItem
                                 {
                                    OrderId = e.OrderId,
-                                   ShopId = e.ShopId,
+                                  // ShopId = e.ShopId,
                                    CustomerId = e.CustomerId,
                                    TotalPrice = e.TotalPrice,
 
@@ -55,29 +55,29 @@ namespace KaleMeCrazy.Services
         }
 
         // GET (all orders for one shop)
-        public IEnumerable<OrderListItem> GetAllOrdersByShopId(int shopId)
-        {
-            using (var ctx = new ApplicationDbContext())
-            {
-                var query =
-                    ctx
-                        .Orders
-                        .Where(e => e.ShopId == shopId)
+        //public IEnumerable<OrderListItem> GetAllOrdersByShopId(int shopId)
+        //{
+        //    using (var ctx = new ApplicationDbContext())
+        //    {
+        //        var query =
+        //            ctx
+        //                .Orders
+        //                .Where(e => e.ShopId == shopId)
 
-                        .Select(
-                            e =>
-                            new OrderListItem
-                            {
-                                OrderId = e.OrderId,
-                                ShopId = e.ShopId,
-                                CustomerId = e.CustomerId,
-                                TotalPrice = e.TotalPrice,
-                            }
-                        );
+        //                .Select(
+        //                    e =>
+        //                    new OrderListItem
+        //                    {
+        //                        OrderId = e.OrderId,
+        //                        ShopId = e.ShopId,
+        //                        CustomerId = e.CustomerId,
+        //                        TotalPrice = e.TotalPrice,
+        //                    }
+        //                );
 
-                return query.ToArray();
-            }
-        }
+        //        return query.ToArray();
+        //    }
+        //}
 
         // Get (by id)
         public OrderDetail GetOrderById(int id)
@@ -92,7 +92,7 @@ namespace KaleMeCrazy.Services
                     new OrderDetail
                     {
                         OrderId = entity.OrderId,
-                        ShopId = entity.ShopId,
+                       // ShopId = entity.ShopId,
                         CustomerId = entity.CustomerId,
                         OrderItems = entity.OrderItems,
                         TotalPrice = entity.TotalPrice,
@@ -110,7 +110,7 @@ namespace KaleMeCrazy.Services
                         .Orders
                         .Single(e => e.OrderId == model.OrderId);
                 entity.CustomerId = model.CustomerId;
-                entity.ShopId = model.ShopId;
+               // entity.ShopId = model.ShopId;
                 entity.TotalPrice = model.TotalPrice;
        
 

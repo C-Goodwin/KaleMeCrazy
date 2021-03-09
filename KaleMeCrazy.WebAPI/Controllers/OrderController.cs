@@ -36,13 +36,13 @@ namespace KaleMeCrazy.WebAPI.Controllers
         }
 
         // GET (all for one shop)
-        [HttpGet]
-        public IHttpActionResult GetAllOrdersByShopId(int shopId)
-        {
-            OrderService service = new OrderService();
-            var orders = service.GetAllOrdersByShopId(shopId);
-            return Ok(orders);
-        }
+        //[HttpGet]
+        //public IHttpActionResult GetAllOrdersByShopId(int shopId)
+        //{
+        //    OrderService service = new OrderService();
+        //    var orders = service.GetAllOrdersByShopId(shopId);
+        //    return Ok(orders);
+        //}
 
         // GET (by id)
         [HttpGet]

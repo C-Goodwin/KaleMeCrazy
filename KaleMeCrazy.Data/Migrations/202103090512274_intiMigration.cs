@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class cleancodeandupdatedmigrations : DbMigration
+    public partial class intiMigration : DbMigration
     {
         public override void Up()
         {
@@ -13,10 +13,27 @@
                     {
                         CustomerId = c.Int(nullable: false, identity: true),
                         FullName = c.String(nullable: false),
-                        OrderId = c.Int(nullable: false),
-                        IsMember = c.Boolean(nullable: false),
+                        OwnerId = c.Guid(nullable: false),
+                        Email = c.String(),
+                        PhoneNumber = c.String(),
+                        Address = c.String(),
+                        ShopId = c.Int(),
                     })
-                .PrimaryKey(t => t.CustomerId);
+                .PrimaryKey(t => t.CustomerId)
+                .ForeignKey("dbo.Shop", t => t.ShopId)
+                .Index(t => t.ShopId);
+            
+            CreateTable(
+                "dbo.Shop",
+                c => new
+                    {
+                        ShopId = c.Int(nullable: false, identity: true),
+                        OwnerId = c.Guid(nullable: false),
+                        Name = c.String(nullable: false),
+                        Location = c.String(nullable: false),
+                        Menu = c.String(),
+                    })
+                .PrimaryKey(t => t.ShopId);
             
             CreateTable(
                 "dbo.MenuItem",
@@ -24,6 +41,7 @@
                     {
                         ItemId = c.Int(nullable: false, identity: true),
                         MenuId = c.Int(nullable: false),
+                        OwnerId = c.Guid(nullable: false),
                         ItemName = c.String(nullable: false),
                         Description = c.String(nullable: false),
                         Price = c.Double(nullable: false),
@@ -38,24 +56,12 @@
                     {
                         MenuId = c.Int(nullable: false, identity: true),
                         ShopId = c.Int(nullable: false),
+                        OwnerId = c.Guid(nullable: false),
+                        Name = c.String(),
                     })
                 .PrimaryKey(t => t.MenuId)
                 .ForeignKey("dbo.Shop", t => t.ShopId, cascadeDelete: true)
                 .Index(t => t.ShopId);
-            
-            CreateTable(
-                "dbo.Shop",
-                c => new
-                    {
-                        ShopId = c.Int(nullable: false, identity: true),
-                        OwnerId = c.Guid(nullable: false),
-                        Name = c.String(nullable: false),
-                        Location = c.String(nullable: false),
-                        MenuItemId = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.ShopId)
-                .ForeignKey("dbo.MenuItem", t => t.MenuItemId, cascadeDelete: false)
-                .Index(t => t.MenuItemId);
             
             CreateTable(
                 "dbo.OrderItem",
@@ -79,13 +85,10 @@
                         OrderId = c.Int(nullable: false, identity: true),
                         CustomerId = c.Int(nullable: false),
                         TotalPrice = c.Double(nullable: false),
-                        ShopId = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.OrderId)
-                .ForeignKey("dbo.Customer", t => t.CustomerId, cascadeDelete: false)
-                .ForeignKey("dbo.Shop", t => t.ShopId, cascadeDelete: false)
-                .Index(t => t.CustomerId)
-                .Index(t => t.ShopId);
+                .ForeignKey("dbo.Customer", t => t.CustomerId, cascadeDelete: true)
+                .Index(t => t.CustomerId);
             
             CreateTable(
                 "dbo.IdentityRole",
@@ -166,23 +169,21 @@
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
             DropForeignKey("dbo.OrderItem", "OrderId", "dbo.Order");
-            DropForeignKey("dbo.Order", "ShopId", "dbo.Shop");
             DropForeignKey("dbo.Order", "CustomerId", "dbo.Customer");
             DropForeignKey("dbo.OrderItem", "ItemId", "dbo.MenuItem");
             DropForeignKey("dbo.MenuItem", "MenuId", "dbo.Menu");
             DropForeignKey("dbo.Menu", "ShopId", "dbo.Shop");
-            DropForeignKey("dbo.Shop", "MenuItemId", "dbo.MenuItem");
+            DropForeignKey("dbo.Customer", "ShopId", "dbo.Shop");
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
-            DropIndex("dbo.Order", new[] { "ShopId" });
             DropIndex("dbo.Order", new[] { "CustomerId" });
             DropIndex("dbo.OrderItem", new[] { "OrderId" });
             DropIndex("dbo.OrderItem", new[] { "ItemId" });
-            DropIndex("dbo.Shop", new[] { "MenuItemId" });
             DropIndex("dbo.Menu", new[] { "ShopId" });
             DropIndex("dbo.MenuItem", new[] { "MenuId" });
+            DropIndex("dbo.Customer", new[] { "ShopId" });
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");
             DropTable("dbo.ApplicationUser");
@@ -190,9 +191,9 @@
             DropTable("dbo.IdentityRole");
             DropTable("dbo.Order");
             DropTable("dbo.OrderItem");
-            DropTable("dbo.Shop");
             DropTable("dbo.Menu");
             DropTable("dbo.MenuItem");
+            DropTable("dbo.Shop");
             DropTable("dbo.Customer");
         }
     }

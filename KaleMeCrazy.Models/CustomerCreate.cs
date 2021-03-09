@@ -12,7 +12,7 @@ namespace KaleMeCrazy.Models
 
         // *SETUP* properties you want user input for to create the object. This is the info needed from the User/Customer (POST)
         //// Key is not required on models layer (is required in data layer)
-        [Required]
+        //[Required]
         public int CustomerId { get; set; } // Database will create this CustomerID 
 
         [Required]
@@ -23,10 +23,10 @@ namespace KaleMeCrazy.Models
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
        
-        [Required]
+        //[Required]
         public int ShopId { get; set; }
 
-        [Required]
+        //[Required]
         public int OrderId { get; set; }
 
         //[Required]

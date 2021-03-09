@@ -31,7 +31,7 @@ namespace KaleMeCrazy.Services
                  //   MenuItemId=model.MenuItemId,
                     Name = model.Name,
                     Location = model.Location,
-                   
+                   Menu=model.Menu
                 };
 
             using (var ctx = new ApplicationDbContext())

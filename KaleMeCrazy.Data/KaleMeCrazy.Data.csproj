@@ -79,13 +79,9 @@
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Menu.cs" />
     <Compile Include="MenuItem.cs" />
-    <Compile Include="Migrations\202102260206473_cleancodeandupdatedmigrations.cs" />
-    <Compile Include="Migrations\202102260206473_cleancodeandupdatedmigrations.designer.cs">
-      <DependentUpon>202102260206473_cleancodeandupdatedmigrations.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202102270138018_made the menuitemId nullable.cs" />
-    <Compile Include="Migrations\202102270138018_made the menuitemId nullable.designer.cs">
-      <DependentUpon>202102270138018_made the menuitemId nullable.cs</DependentUpon>
+    <Compile Include="Migrations\202103090512274_intiMigration.cs" />
+    <Compile Include="Migrations\202103090512274_intiMigration.designer.cs">
+      <DependentUpon>202103090512274_intiMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Order.cs" />
@@ -98,11 +94,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202102260206473_cleancodeandupdatedmigrations.resx">
-      <DependentUpon>202102260206473_cleancodeandupdatedmigrations.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202102270138018_made the menuitemId nullable.resx">
-      <DependentUpon>202102270138018_made the menuitemId nullable.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202103090512274_intiMigration.resx">
+      <DependentUpon>202103090512274_intiMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

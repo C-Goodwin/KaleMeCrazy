@@ -7,13 +7,13 @@ namespace KaleMeCrazy.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.4")]
-    public sealed partial class madethemenuitemIdnullable : IMigrationMetadata
+    public sealed partial class intiMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(madethemenuitemIdnullable));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(intiMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "202102270138018_made the menuitemId nullable"; }
+            get { return "202103090512274_intiMigration"; }
         }
         
         string IMigrationMetadata.Source
