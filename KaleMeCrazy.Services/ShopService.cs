@@ -10,9 +10,6 @@ namespace KaleMeCrazy.Services
 {
     public class ShopService
     {
-
-
-
         private readonly Guid _userId;
 
         public ShopService(Guid userId)
@@ -20,18 +17,16 @@ namespace KaleMeCrazy.Services
             _userId = userId;
         }
 
-
-
         public bool CreateShop(ShopCreate model)
         {
             var entity =
                 new Shop()
                 {
-                    OwnerId=_userId,
-                 //   MenuItemId=model.MenuItemId,
+                    OwnerId = _userId,
+                    // MenuItemId=model.MenuItemId, // This is causing this endpoint not to work in Postman
                     Name = model.Name,
                     Location = model.Location,
-                   Menu=model.Menu
+                    Menu = model.Menu
                 };
 
             using (var ctx = new ApplicationDbContext())
@@ -41,8 +36,7 @@ namespace KaleMeCrazy.Services
             }
         }
 
-
-        public IEnumerable<ShopListItem> GetShops() // see notes by specific user
+        public IEnumerable<ShopListItem> GetShops() // Use to see notes by specific user
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -56,7 +50,7 @@ namespace KaleMeCrazy.Services
                                 {
                                     ShopId = e.ShopId,
                                     Name = e.Name,
-                                   
+
                                 }
                         );
 
@@ -66,27 +60,25 @@ namespace KaleMeCrazy.Services
 
         public ShopDetail GetById(int id)
         {
-            // throw new NotImplementedException();
+            // Throw new NotImplementedException();
             using (var ctx = new ApplicationDbContext())
             {
-                //need to look up elevennote....
+                // Need to look up ElevenNote
                 var entity =
-           ctx
-               .Shops
-               .Single(e => e.ShopId == id && e.OwnerId == _userId);
+                    ctx
+                    .Shops
+                    .Single(e => e.ShopId == id && e.OwnerId == _userId);
                 return
-                    new ShopDetail
-                    {
-                        ShopId = entity.ShopId,
-                        Name = entity.Name,
-                        Location = entity.Location,
-                        Menu = entity.Menu,
+                new ShopDetail
+                {
+                    ShopId = entity.ShopId,
+                    Name = entity.Name,
+                    Location = entity.Location,
+                    Menu = entity.Menu,
 
-                    };
+                };
             }
         }
-        
-
 
         public bool UpdateShop(ShopEdit model)
         {
@@ -99,8 +91,6 @@ namespace KaleMeCrazy.Services
 
                 entity.Name = model.Name;
                 entity.Location = model.Location;
-               
-
                 return ctx.SaveChanges() == 1;
             }
         }
@@ -119,11 +109,5 @@ namespace KaleMeCrazy.Services
                 return ctx.SaveChanges() == 1;
             }
         }
-
-
-
-
-
-
     }
 }

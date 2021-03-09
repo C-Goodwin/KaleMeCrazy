@@ -39,7 +39,6 @@ namespace KaleMeCrazy.WebAPI.Controllers // Controllers are where methods are pl
             if (id<1)
             {
                 return BadRequest();
-
             }
 
             var service = CreateCustomerService();
@@ -51,7 +50,6 @@ namespace KaleMeCrazy.WebAPI.Controllers // Controllers are where methods are pl
             }
 
             return Ok(customer);
-
         }
         [HttpPost]
         public IHttpActionResult CreateCustomer([FromBody] CustomerCreate customer)

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace KaleMeCrazy.Data
 { 
-    public class Shop //this is the child 
+    public class Shop // This is the child 
     {
         [Key]
         public int ShopId { get; set; }
@@ -23,7 +23,6 @@ namespace KaleMeCrazy.Data
         public string Location { get; set; }
         public string Menu { get; set; }
 
-      //  public int? MenuItemId { get; set; }
-
+     // public int? MenuItemId { get; set; }
     }
 }

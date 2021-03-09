@@ -13,8 +13,7 @@ namespace KaleMeCrazy.Services // This layer is how application interacts with d
         // THIS IS A TEST ...
         private readonly Guid _userid;
 
-        // this is a constuctor.
-        public CustomerService(Guid userid)
+        public CustomerService(Guid userid) // This is a constructor
         {
             _userid = userid;
           
@@ -24,15 +23,14 @@ namespace KaleMeCrazy.Services // This layer is how application interacts with d
         {
             var entity =
                 new Customer()
-                {
-  
+                {  
                     OwnerId=_userid,
                     ShopId = model.ShopId,
                     Email = model.Email,
                     PhoneNumber = model.PhoneNumber,
                     Address = model.Address,
                     FullName = model.Name,
-                    //OrderId=model.OrderId
+                    //OrderId=model.OrderId // Not working with Postman
                 };
             using (var ctx = new ApplicationDbContext())
             {
@@ -47,7 +45,7 @@ namespace KaleMeCrazy.Services // This layer is how application interacts with d
                 var query =
                     ctx
                         .Customers
-                        .Where(e =>  e.OwnerId == _userid) // Changed from CustomerId to shopId
+                        .Where(e =>  e.OwnerId == _userid) // < Had to change this, not completely sure why
                         .Select(
                             e =>
                                 new CustomerListItem
@@ -72,11 +70,11 @@ namespace KaleMeCrazy.Services // This layer is how application interacts with d
                     {
                         CustomerId = entity.CustomerId,
                         FullName = entity.FullName,
-                        //OrderId = entity.OrderId,
+                     // OrderId = entity.OrderId, // Not working with Postman
                         Address = entity.Address,
                         PhoneNumber = entity.PhoneNumber,
                         Email = entity.Email,
-                        //ShopId = entity.ShopId,
+                     // ShopId = entity.ShopId, // Not working with Postman
                     };
             }
         }

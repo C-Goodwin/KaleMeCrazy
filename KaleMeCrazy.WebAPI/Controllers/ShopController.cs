@@ -13,17 +13,17 @@ namespace KaleMeCrazy.WebAPI.Controllers
 {
     public class ShopController : ApiController
     {
-        private readonly Guid _userId;
+        private readonly Guid _userId; // Do I need this Guid?
 
         private ShopService CreateShopService()
         {
-            var userId = Guid.Parse(User.Identity.GetUserId());
+            var userId = Guid.Parse(User.Identity.GetUserId()); // This is important
             var service = new ShopService(userId);
             return service;
         }
 
-
-        public IHttpActionResult Post(ShopCreate shopCreate)
+        [HttpPost]
+        public IHttpActionResult PostShop(ShopCreate shopCreate)
         {
             if (shopCreate == null)
             {
@@ -39,12 +39,11 @@ namespace KaleMeCrazy.WebAPI.Controllers
             {
                 return InternalServerError();
             }
-
             return Ok();
         }
 
         [HttpGet]
-        public IHttpActionResult Get() 
+        public IHttpActionResult GetShop() 
         {
             var service = CreateShopService();
             var shops = service.GetShops();
@@ -56,7 +55,7 @@ namespace KaleMeCrazy.WebAPI.Controllers
         }
 
         [HttpGet]
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult GetShopById(int id)
         {
             var service = CreateShopService();
 
@@ -72,13 +71,11 @@ namespace KaleMeCrazy.WebAPI.Controllers
                 return InternalServerError();
             }
 
-            return Ok(shop);
-
-            
+            return Ok(shop);           
         }
 
         [HttpPut]
-        public IHttpActionResult Put (ShopEdit shop)
+        public IHttpActionResult PutShop (ShopEdit shop)
         {
             if (shop==null)
             {
@@ -102,7 +99,7 @@ namespace KaleMeCrazy.WebAPI.Controllers
         }
 
         [HttpDelete]
-        public IHttpActionResult DeleteStore(int id) 
+        public IHttpActionResult DeleteShop(int id) 
         {
             if (id<1)
             {
