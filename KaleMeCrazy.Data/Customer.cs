@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -19,10 +19,12 @@ namespace KaleMeCrazy.Data // *UserID in ElevenNote is ShopID in this project* *
         public string FullName { get; set; }
         public Guid OwnerId { get; set; } // * //
 
-        [ForeignKey(nameof(Order))]
-        public int OrderId { get; set; }
-        public virtual Order Order { get; set; } // Navigation property, OrderId looks to this to get information about an EXISTING order
+       // [ForeignKey(nameof(Order))]
+       // public int OrderId { get; set; }
+       // public virtual Order Order { get; set; } // Navigation property, OrderId looks to this to get information about an EXISTING order
        
+
+
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public string Address { get; set; }
