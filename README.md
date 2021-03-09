@@ -1,6 +1,6 @@
 # KaleMeCrazy
 
-![KaleMeCrazyLogo](/images/KaleMeCrazyLogoFinal.png)
+![KaleMeCrazyLogo](/Images/KaleMeCrazyLogoFinal.png)
 
 *All instruction s for this projct are realated to GitHub, Visual Studio Community, PostMan, and C#.*
 ### How to run locally
