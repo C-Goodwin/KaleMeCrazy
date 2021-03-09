@@ -62,11 +62,10 @@ namespace KaleMeCrazy.Services
                         .Single(e => e.ItemId == model.ItemId && e.OrderId == model.OrderId);
 
                 entity.ItemId = model.ItemId;
-                entity.Id = model.Id;
                 entity.Quantity = model.Quantity;
                 entity.OrderId = model.OrderId;
 
-                return ctx.SaveChanges() == 1;
+                return ctx.SaveChanges() == 0;
             }
         }
 
