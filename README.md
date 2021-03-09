@@ -1,4 +1,3 @@
-# KaleMeCrazy
 
 ![KaleMeCrazyLogo](/Images/KaleMeCrazyLogoFinal.png)
 
