@@ -13,18 +13,14 @@ namespace KaleMeCrazy.Data // *UserID in ElevenNote is ShopID in this project* *
         [Key]
         public int CustomerId { get; set; } // TSQL identity property. Once customer is created, will auto-create and increment other newly created customer ids by 1.
 
-        // public Guid UserId { get; set; } // Allows us to get info about customer via their 32bit hex code.
 
         [Required]
         public string FullName { get; set; }
         public Guid OwnerId { get; set; } // * //
 
-       // [ForeignKey(nameof(Order))]
-       // public int OrderId { get; set; }
-       // public virtual Order Order { get; set; } // Navigation property, OrderId looks to this to get information about an EXISTING order
+      
+        public virtual List<Order> Orders { get; set; }
        
-
-
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
         public string Address { get; set; }

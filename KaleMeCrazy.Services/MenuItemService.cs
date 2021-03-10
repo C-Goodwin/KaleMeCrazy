@@ -31,6 +31,8 @@ namespace KaleMeCrazy.Services
                     OwnerId = _userId
                 };
 
+            
+
             using (var ctx = new ApplicationDbContext())
             {
                 ctx.MenuItems.Add(entity);
@@ -61,7 +63,7 @@ namespace KaleMeCrazy.Services
             }
         }
 
-        // GET (get menuitem by menuid)
+        // GET (get menuitems by menuid)
         public IEnumerable<MenuItemListItem> GetMenuItemsByMenuId(int menuId)
         {
             using (var ctx = new ApplicationDbContext())

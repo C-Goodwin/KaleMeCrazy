@@ -15,7 +15,6 @@ namespace KaleMeCrazy.Data
         [ForeignKey (nameof(Customer))]
         public int CustomerId { get; set; }
         public virtual Customer Customer { get; set; }
-        [Required]
         public List<OrderItem> OrderItems { get; set;}
         [Required]
         public double TotalPrice { get; set;}
